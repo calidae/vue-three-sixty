@@ -1,4 +1,4 @@
-# Vu eThree Sixty
+# Vue Three Sixty
 - A Simple 360&deg; Product Viewer built on Vue.js
 
 ## Features
