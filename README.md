@@ -1,4 +1,4 @@
-# cld-360
+# Vu eThree Sixty
 - A Simple 360&deg; Product Viewer built on Vue.js
 
 ## Features
@@ -16,13 +16,13 @@
 
 ## Installation
 ```
-npm install cld-360
+npm install vue-three-sixty
 ```
 
 ## Config
 
 ```
-import VueThreeSixty from 'cld-360'
+import VueThreeSixty from 'vue-three-sixty'
 
 Vue.use(VueThreeSixty)
 ```
@@ -31,8 +31,8 @@ Vue.use(VueThreeSixty)
 ```
 <vue-three-sixty 
   :amount=36
-  imagePath="https://scaleflex.cloudimg.io/width/600/q35/https://scaleflex.ultrafast.io/https://scaleflex.airstore.io/demo/chair-360-36"
-  fileName="chair_{index}.jpg?v1"
+  image-path="https://scaleflex.cloudimg.io/width/600/q35/https://scaleflex.ultrafast.io/https://scaleflex.airstore.io/demo/chair-360-36"
+  filemame="chair_{index}.jpg?v1"
 />
 ```
 ### Adding a Header
@@ -74,5 +74,5 @@ Vue.use(VueThreeSixty)
 
 ## Credits
 
-- Fork from this repo https://github.com/rajeevgade/vue-360
 - Customized by Calidae.com
+- Original code in https://github.com/rajeevgade/vue-360
