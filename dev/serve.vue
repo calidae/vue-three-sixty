@@ -12,13 +12,12 @@ export default Vue.extend({
 
 <template>
   <div id="app">
-    <vue-three-sixty
-      :amount="54"
-      padding-index
-      start-at-zero
-      spin-reverse
-      image-path="http://host.docker.internal:8000/thumb/original?image=/combinations/360/2"
-      file-name="{index}.jpg"
-     />
+    <div style="width:300px;">
+      <vue-three-sixty
+        :amount="36"
+        image-path="https://scaleflex.airstore.io/demo/chair-360-36"
+        file-name="chair_{index}.jpg?v2"
+      />
+    </div>
   </div>
 </template>
