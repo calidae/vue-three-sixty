@@ -12,7 +12,7 @@
                 v-hammer:pinchin="onPinchIn"
             ></canvas>
         </div>
-        <div class="vue-three-sixty__buttons">
+        <div class="vue-three-sixty__buttons" v-if="imagesLoaded">
             <div class="vue-three-sixty__btn vue-three-sixty__btn--play" @click="togglePlay" v-if="!playing">
                 <svg :width="`${btnSize}px`" :height="`${btnSize}px`" :viewBox="`0 0 ${btnSize} ${btnSize}`">
                     <g :transform="`scale(${btnScale} ${btnScale})`">
@@ -152,7 +152,8 @@ export default {
             default: false
         },
         startAtZero: {
-            require: false,
+            type: Boolean,
+            require: true,
             default: false
         },
         disableZoom: {
@@ -292,6 +293,7 @@ export default {
                 fromIndex = 0;
                 toIndex = this.amount - 1;
             }
+            console.log(toIndex)
             for(let i=fromIndex; i <= toIndex; i++) {
                 const imageIndex = (this.paddingIndex) ? this.lpad(i, "0", 2) : i
                 const fileName = this.fileName.replace('{index}', imageIndex);
@@ -788,7 +790,7 @@ export default {
 
     .vue-three-sixty__viewport {
         width: 100%;
-        height: 100%;
+        /* height: 100%; */
         overflow: hidden;
         left: 0;
         display: flex;
@@ -832,8 +834,17 @@ export default {
         fill: #000;
     }
     .vue-three-sixty__loading {
-        width: 100%;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
         text-align: center;
+
         font-size: 3em;
         padding: 1em;
         opacity: 0.2;
