@@ -151,6 +151,10 @@ export default {
             require: false,
             default: false
         },
+        startAtZero: {
+            require: false,
+            default: false
+        },
         disableZoom: {
             type: Boolean,
             require: false,
@@ -282,8 +286,13 @@ export default {
             this.playing = this.autoplay
         },
         fetchData() {
-
-            for(let i=1; i <= this.amount; i++) {
+            let fromIndex = 1;
+            let toIndex = this.amount;
+            if (this.startAtZero) {
+                fromIndex = 0;
+                toIndex = this.amount - 1;
+            }
+            for(let i=fromIndex; i <= toIndex; i++) {
                 const imageIndex = (this.paddingIndex) ? this.lpad(i, "0", 2) : i
                 const fileName = this.fileName.replace('{index}', imageIndex);
                 const filePath = `${this.imagePath}/${fileName}`
@@ -783,6 +792,7 @@ export default {
         overflow: hidden;
         left: 0;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
     }
@@ -822,6 +832,8 @@ export default {
         fill: #000;
     }
     .vue-three-sixty__loading {
+        width: 100%;
+        text-align: center;
         font-size: 3em;
         padding: 1em;
         opacity: 0.2;

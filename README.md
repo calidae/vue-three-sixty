@@ -54,6 +54,7 @@ Vue.use(VueThreeSixty)
 | loop | Number | Number of loops you want to autoplay | Optional | 1 |
 | Optional | false |
 | paddingIndex | Boolean | Apply Leading Zero to Image Index | Optional | false |
+| startAtZero | Boolean | Set tru if your fist images start at 0 | Optional | false |
 | disableZoom | Boolean | Disable Zoom Functionality | Optional | false |
 | scrollImage | Boolean | Scroll Images instead of Default Zoom | Optional | false |
 | btnBgColor | String | Buttons Background color | Optional | #F1F1F2 |
