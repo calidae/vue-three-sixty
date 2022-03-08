@@ -1,6 +1,8 @@
 # Vue Three Sixty
 - A Simple 360&deg; Product Viewer built on Vue.js
 
+![Example](readme.gif)
+
 ## Features
 
 - 360&deg; View
