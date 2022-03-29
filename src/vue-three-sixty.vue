@@ -189,6 +189,11 @@ export default {
                 return value > 13 && value < 129
             }
         },
+        scaledPreload: {
+            type: Boolean,
+            require: false,
+            default: false
+        },
     },
     data() {
         return {
@@ -301,7 +306,12 @@ export default {
                 this.imageData.push(filePath)
             }
 
-            this.preloadImages()
+            if (this.scaledPreload) {
+                this.scaledPreloadImages()
+            }
+            else {
+                this.preloadImages()
+            }
         },
 
         lpad(str, padString, length) {
@@ -325,6 +335,19 @@ export default {
                 console.log('No Images Found')
             }
         },
+
+        scaledPreloadImages() {
+            if (this.imageData.length) {
+                try {
+                    this.amount = this.imageData.length;
+                    this.addImage(this.imageData[this.loadedImages]);
+                } catch (error) {
+                    console.error(`Something went wrong while loading images: ${error.message}`);
+                }
+            } else {
+                console.log('No Images Found')
+            }
+        },
         addImage(resultSrc) {
             const image = new Image();
 
@@ -338,6 +361,9 @@ export default {
             const percentage = Math.round(this.loadedImages / this.amount * 100);
 
             this.loadedImages += 1;
+            if(this.scaledPreload && this.loadedImages <= this.amount) {
+                this.scaledPreloadImages()
+            }
             this.updatePercentageInLoader(percentage);
 
             if (this.loadedImages === this.amount) {
@@ -478,7 +504,6 @@ export default {
             
             if (!cached) {
                 this.currentCanvasImage = new Image()
-                this.currentCanvasImage.crossOrigin='anonymous'
                 this.currentCanvasImage.src = this.currentImage
 
                 this.currentCanvasImage.onload = () => {
